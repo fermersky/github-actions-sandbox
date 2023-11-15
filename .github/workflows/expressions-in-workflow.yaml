@@ -18,4 +18,4 @@ jobs:
       matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
       - run: echo "✅"
-      - run: echo $MY_ENV_VAR
+      - run: echo ${{matrix.include.config}}
