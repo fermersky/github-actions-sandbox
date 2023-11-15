@@ -4,11 +4,13 @@ on: [push]
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: 18
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
-          node-version: "20"
+          node-version: ${{env.NODE_VERSION}}
       - run: npm install -g bats
       - run: bats -v
       - run: node -v
