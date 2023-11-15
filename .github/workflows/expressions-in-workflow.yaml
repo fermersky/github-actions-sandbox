@@ -19,3 +19,4 @@ jobs:
     steps:
       - run: echo "✅"
       - run: echo ${{matrix.include.config}}
+        if: ${{ success() }}
