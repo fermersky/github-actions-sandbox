@@ -12,7 +12,10 @@ jobs:
   job2:
     needs: [job1]
     runs-on: ubuntu-latest
+    env:
+      MY_ENV_VAR: test
     strategy:
       matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
       - run: echo "✅"
+      - run: echo $MY_ENV_VAR
