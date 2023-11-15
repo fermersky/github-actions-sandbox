@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MY_ENV_VAR: test
+      MY_MATRIX: ${{ needs.job1.outputs.matrix }}
     strategy:
       matrix: ${{ fromJSON(needs.job1.outputs.matrix) }}
     steps:
+      - run: echo $MY_MATRIX
       - run: echo "✅"
-      - run: echo 'Ok'
-        if: ${{ success() }}
